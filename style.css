@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("img/187-153910-best-most-popular-movies-2021_700x400.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.6); /* زودت التغميق شوية عشان الشغل يبان */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+  /* هضيف هنا الأنيميشن */
+  animation: moveBackground 25s linear infinite;
+}
+
+/* هنا بنحدد الحركة هتمشي ازاي */
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%; /* بتتحرك للجنب ولتحت شوية */
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: fixed;
+  top: 20px; /* خليه نازل شوية عن السقف عشان يبان إنه طاير */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1000;
+
+  /* ستايل الزجاج (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px); /* ده اللي بيعمل التغبيش العالمي */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px; /* حواف دائرية فخمة */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+.logo {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 900; /* خليه Bold جداً عشان يظهر */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logo span {
+  display: inline-block;
+  color: #ff4d4d; /* اللون اللي هيكسر التصميم */
+  position: relative;
+  text-shadow: 0 0 15px rgba(255, 77, 77, 0.6); /* إضاءة خفيفة (Glow) */
+  transition: 0.3s;
+}
+
+/* حركة صايعة لما تقف بالماوس على اللوجو */
+.logo:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo:hover span {
+  color: #ff4d4d;
+  transform: rotate(20deg);
+  padding: 0 5px;
+  border-radius: 4px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.nav-actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-premium {
+  background: linear-gradient(45deg, #ff4d4d, #f9cb28);
+  border: none;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 10px;
+}
+
+.btn-premium:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 20px rgba(255, 77, 77, 0.4),
+    0px 0px 10px #f9cb28;
+}
+.title-h1 {
+  margin-top: 120px;
+}
+h1 {
+  color: #fff; /* لون أبيض صريح */
+  font-size: 36px; /* حجم مناسب للعناوين */
+  font-weight: 800;
+  text-transform: uppercase; /* حروف كبيرة عشان الهيبة */
+  letter-spacing: 1.5px;
+  margin-left: 5%; /* عشان تتماشى مع بداية كروت الأفلام */
+  margin-bottom: 20px;
+  padding: 0; /* شيل أي بادينج قديم */
+  border: none;
+  /* لمسة فنية: خط متدرج تحت الكلمة */
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px; /* طول الخط اللي تحت الكلمة */
+  height: 4px;
+  background: #ff4d4d; /* نفس لون الـ 404 اللي في اللوجو */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.5); /* وهج خفيف */
+}
+.box-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+img {
+  width: 150px;
+  height: 500px;
+  border-radius: 25px;
+  object-fit: cover;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.314);
+  transition: 0.5s ease-in-out;
+  filter: grayscale(80%) brightness(0.8);
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+img:hover {
+  width: 350px;
+  height: 500px;
+  filter: grayscale(0%);
+  transform: translateY(-10px);
+}
+@media (max-width: 767px) {
+  /* الـ Navbar ينزل تحت */
+  .navbar {
+    padding: 10px 20px;
+    width: 100%; /* يصغر شوية عشان ميبقاش لازق في الحواف */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .logo span {
+    display: none;
+  }
+  /* نلغي اللوجو في الموبايل عشان الزحمة أو نصغره جداً */
+  .logo {
+    font-size: 16px;
+  }
+
+  .nav-links {
+    gap: 10px;
+    margin-right: 5px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .btn-premium {
+    display: none;
+  }
+
+  /* تظبيط الـ Hero section */
+  h1 {
+    font-size: 24px;
+    margin-left: 10px;
+    text-align: center;
+    display: block;
+  }
+
+  h1::after {
+    left: 50%;
+    transform: translateX(-50%); /* يسنتر الخط تحت الكلمة */
+  }
+
+  /* تظبيط الصور في الموبايل */
+  .box-img {
+    display: grid;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+    place-items: center;
+  }
+
+  img {
+    width: 70%; /* صورتين جنب بعض */
+    height: 300px;
+    border-radius: 25px;
+    object-fit: cover;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.314);
+    transition: 0.5s ease-in-out;
+    filter: grayscale(80%) brightness(0.8);
+    cursor: pointer;
+    border: 2px solid white;
+  }
+
+  img:hover {
+    width: 90%; /* تكبير بسيط جداً في الموبايل */
+    height: 450px;
+    transform: scale(1.05);
+    margin: 20px 0;
+  }
+}
